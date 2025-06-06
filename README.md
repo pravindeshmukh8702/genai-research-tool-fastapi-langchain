@@ -19,16 +19,16 @@ A smart research tool that allows users to input URLs or documents (PDF, TXT) an
 - Python
 - FastAPI
 - HuggingFace Transformers
-- FAISS
+- Chroma
 - Streamlit
 - LangChain (optional)
-- OpenAI API (for responses)
+- GEMINII API (for responses)
 
 ## 🚀 How It Works
 
 1. User uploads a file or URL
 2. Content is broken into chunks and embedded
-3. FAISS is used to search relevant chunks
+3. chroma is used to store vector database
 4. Relevant context + user question is sent to the OpenAI model
 5. The response is displayed in the UI
 
