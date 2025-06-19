@@ -56,3 +56,16 @@ genai-research-tool/
 ├── requirements.txt
 ├── README.md
 
+🧪 Example Prompts
+"Summarize the uploaded research paper in 5 points."
+
+"What are the key takeaways from the document?"
+
+"List all the advantages mentioned in the PDF."
+
+🙋‍♂️ About the Author
+I’m Pravin Deshmukh, a Python backend developer and GenAI enthusiast.
+I love building with FastAPI, LangChain, Redis, and OpenAI/Gemini APIs — and I’m actively seeking opportunities in backend or AI-powered product development.
+
+📩 Connect on LinkedIn
+📁 Explore More Projects
