@@ -1,53 +1,145 @@
-# SaraBotAI – Generative AI Research Tool 🤖
+SaraBotAI – Generative AI Research Tool 🤖
+A Generative AI–powered research assistant that processes URLs or documents and answers intelligent questions based on the content. Designed for fast, accurate research with semantic search, embeddings, and LLM integration.
 
-A Generative AI-powered research tool that allows users to upload URLs or documents and ask intelligent questions based on the content. Built using Python, Streamlit, HuggingFace embeddings, ChromaDB, LangChain, and Gemini API.
+🔧 Features
+📄 Upload URLs or plain-text files (TXT)
 
----
+🔍 Ask natural-language questions about uploaded content
 
-## 🔧 Features
+🧠 Generate embeddings with HuggingFace Transformers
 
-- 📄 Upload URLs or text files (TXT)
-- 🔍 Ask questions based on the uploaded content
-- 🧠 Generates embeddings with HuggingFace Transformers
-- 🗄️ Stores vectors in ChromaDB for semantic search
-- 💬 Uses Gemini API to generate detailed answers with citations
-- 📊 Visualizes frequent terms and generates summary reports
+🗄️ Store and search vectors in ChromaDB
 
----
+💬 Generate detailed, cited answers via Gemini API
 
-## 🛠 Tech Stack
+📊 Visualize key terms and generate summary reports
 
-- Python
-- Streamlit (interactive frontend and backend)
-- HuggingFace Transformers
-- ChromaDB
-- LangChain
-- Gemini API
-- Pandas & Plotly
+🛠 Tech Stack
+Language: Python
 
----
+Frontend + Backend: Streamlit
 
-## 🚀 How It Works
+Embeddings: HuggingFace Transformers
 
-1. User uploads URLs or text files.
-2. Content is split into chunks and embedded using HuggingFace models.
-3. ChromaDB stores the vector embeddings.
-4. Relevant context is retrieved via similarity search.
-5. The Gemini model generates an answer based on the question and context.
-6. Results are displayed in Streamlit, including sources and visualizations.
+Vector DB: ChromaDB
 
----
+Orchestration: LangChain
 
-## 📦 Installation
+LLM: Gemini API
 
-Clone the repository and install dependencies:
+Visualization: Pandas, Plotly
 
-```bash
-git clone https://github.com/your-username/genai-research-tool.git
+Cloud: AWS (EC2, S3, IAM, Security Groups)
+
+🚀 How It Works
+Upload URLs or text files.
+
+Content is split into chunks → embedded via HuggingFace model.
+
+Embeddings are stored in ChromaDB.
+
+A similarity search fetches the most relevant chunks.
+
+Gemini API generates answers based on retrieved context.
+
+Results (answer, citations, visualizations) are displayed in Streamlit.
+
+📦 Installation (Local)
+bash
+Copy
+Edit
+# 1. Clone repo
+git clone https://github.com/pravindeshmukh8702/genai-research-tool.git
 cd genai-research-tool
+
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
+
+# 3. Install dependencies
 pip install -r requirements.txt
 
+# 4. Set environment variables
+export GEMINI_API_KEY="your_api_key_here"     # Mac/Linux
+set GEMINI_API_KEY="your_api_key_here"        # Windows
 
+# 5. Run the app locally
+streamlit run app.py
+☁️ AWS Deployment (EC2)
+Launch EC2 Instance
+
+OS: Ubuntu 22.04 LTS
+
+Instance type: t2.medium (or higher)
+
+Allow inbound rules: HTTP (80), HTTPS (443), Custom TCP 8501 (Streamlit default), SSH (22)
+
+SSH into EC2
+
+bash
+Copy
+Edit
+ssh -i your-key.pem ubuntu@your-ec2-public-ip
+Install system packages
+
+bash
+Copy
+Edit
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3-pip python3-venv git -y
+Clone your repo
+
+bash
+Copy
+Edit
+git clone https://github.com/pravindeshmukh8702/genai-research-tool.git
+cd genai-research-tool
+Create and activate virtual environment
+
+bash
+Copy
+Edit
+python3 -m venv venv
+source venv/bin/activate
+Install dependencies
+
+bash
+Copy
+Edit
+pip install -r requirements.txt
+Set environment variables
+
+bash
+Copy
+Edit
+echo "export GEMINI_API_KEY='your_api_key_here'" >> ~/.bashrc
+source ~/.bashrc
+Run Streamlit on public IP
+
+bash
+Copy
+Edit
+streamlit run app.py --server.address 0.0.0.0 --server.port 8501
+(Optional) Keep app running with screen
+
+bash
+Copy
+Edit
+sudo apt install screen -y
+screen -S sarabot
+streamlit run app.py --server.address 0.0.0.0 --server.port 8501
+# Detach: Ctrl+A then D
+Access app
+Open in browser:
+
+cpp
+Copy
+Edit
+http://<your-ec2-public-ip>:8501
+📂 Project Structure
+Copy
+Edit
 genai-research-tool/
 ├── app.py
 ├── modules/
@@ -57,8 +149,6 @@ genai-research-tool/
 │   └── style.css
 ├── requirements.txt
 ├── README.md
-
-
 🧪 Example Prompts
 "Summarize the uploaded research article in 5 bullet points."
 
@@ -66,9 +156,16 @@ genai-research-tool/
 
 "List all key takeaways from the content."
 
+📊 Architecture Diagram
+plaintext
+Copy
+Edit
+User → Streamlit App → LangChain Orchestrator
+→ HuggingFace Embeddings → ChromaDB → Gemini API
+→ Answer + Citations → Streamlit Visualization
 🙋‍♂️ About the Author
-I’m Pravin Deshmukh, a Python backend developer and GenAI enthusiast.
-I enjoy building intelligent products using Streamlit, LangChain, HuggingFace, and Gemini/OpenAI APIs.
+I’m Pravin Deshmukh, a Python backend developer and AWS + AI integration enthusiast.
+I build intelligent, deployable products using AWS, Streamlit, LangChain, HuggingFace, and LLM APIs.
 
-📩 Connect with me on LinkedIn   https://www.linkedin.com/in/pravindeshmukh8702
-💻 Explore more of my projects   https://github.com/pravindeshmukh8702
+📩 LinkedIn – linkedin.com/in/pravindeshmukh8702
+💻 GitHub – github.com/pravindeshmukh8702
